@@ -13,3 +13,4 @@ python-dotenv==1.0.0
 beautifulsoup4==4.12.2
 numpy==1.25.2
 pandas==2.1.0
+sqlalchemy_repr==0.1.0

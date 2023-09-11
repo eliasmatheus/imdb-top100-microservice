@@ -5,7 +5,6 @@ from schemas import ErrorSchema
 
 from logger import logger
 from models import Session, Movie
-from sqlalchemy.exc import IntegrityError
 
 
 movie_tag = Tag(
