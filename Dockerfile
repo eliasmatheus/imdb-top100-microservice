@@ -1,6 +1,15 @@
 # Define a imagem base
 FROM python:3.11
 
+# Configura o locale para
+RUN apt-get update && \
+  apt-get install -y locales && \
+  sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+  dpkg-reconfigure --frontend=noninteractive locales
+
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
 

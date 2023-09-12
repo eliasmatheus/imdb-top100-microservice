@@ -52,6 +52,7 @@ def present_movies(movies: Movie):
                 "Genre": movie.genre,
                 "Plot": movie.plot,
                 "Poster": movie.poster,
+                "Response": "True",
             }
         )
 
