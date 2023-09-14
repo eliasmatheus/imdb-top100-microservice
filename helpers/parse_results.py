@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import locale
 
-# Defina a localização para o formato desejado (por exemplo, en_US para inglês nos EUA)
+# Defina a localização para o formato desejado (por exemplo, en_US para inglês
+# nos EUA)
 locale.setlocale(
     locale.LC_ALL, "en_US.UTF-8"
 )  # Altere o valor da localização conforme necessário
@@ -112,7 +113,13 @@ def parse_results(results):
 
     # Use Pandas str.extract to remove all String characters, and save the
     # value as type int for cleaning up the data with Pandas.
-    movies["year"] = movies["year"].str.strip()
+    movies["year"] = (
+        movies["year"]
+        .str.replace("(", "")
+        .str.replace(")", "")
+        .str.replace("I", "")
+        .str.strip()
+    )
     movies["runtime"] = movies["runtime"].str.strip()
     movies["metascore"] = movies["metascore"].str.strip()
 
