@@ -31,6 +31,10 @@ if not database_exists(engine.url):
 # cria as tabelas do banco, caso não existam
 Base.metadata.create_all(engine)
 
+# limpa a base
+session = Session()
+session.query(Movie).delete()
+session.commit()
 
 # faz o web scraping e salva os filmes na base
 get_movies(engine)

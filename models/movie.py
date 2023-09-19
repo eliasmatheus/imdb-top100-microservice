@@ -12,56 +12,109 @@ class Movie(Base):
     # O name da tabela no banco de dados
     __tablename__ = "movie"
 
-    imdb_id = Column(String(12), primary_key=True)
-    title = Column(String(255), nullable=False)
-    year = Column(String(4), nullable=False)
-    runtime = Column(String(10))
-    imdb_rating = Column(String(3))
-    metascore = Column(String(3))
-    imdb_votes = Column(String(12))
-    box_office = Column(Integer)
-    genre = Column(String(255))
-    plot = Column(String(255))
-    poster = Column(String(255))
+    imdbID = Column(String(12), primary_key=True)
+
+    Title = Column(String(255), nullable=False)
+
+    Year = Column(String(4))
+    Released = Column(String(10))
+    Runtime = Column(String(12))
+    Genre = Column(String(255))
+    Director = Column(String(255))
+    Writer = Column(String(255))
+    Actors = Column(String(255))
+    Plot = Column(String(255))
+    Language = Column(String(255))
+    Country = Column(String(255))
+    Awards = Column(String(255))
+    Poster = Column(String(255))
+    Rated = Column(String(8))
+    Metascore = Column(String(3))
+    imdbRating = Column(String(3))
+    imdbVotes = Column(String(12))
+    Type = Column(String(255))
+    DVD = Column(String(255))
+    BoxOffice = Column(Integer)
+    Production = Column(String(255))
+    Website = Column(String(255))
 
     def __init__(
         self,
-        imdb_id: str,
-        title: str,
-        year: int,
-        runtime: int,
-        imdb_rating: int,
-        metascore: int,
-        imdb_votes: int,
-        box_office: int,
-        genre: str,
-        plot: str,
-        poster: str,
+        imdbID: str,
+        Title: str,
+        Year: int,
+        Released: str,
+        Runtime: int,
+        Genre: str,
+        Director: str,
+        Writer: str,
+        Actors: str,
+        Plot: str,
+        Language: str,
+        Country: str,
+        Awards: str,
+        Poster: str,
+        Rated: str,
+        Metascore: int,
+        imdbRating: int,
+        imdbVotes: int,
+        Type: str,
+        DVD: str,
+        BoxOffice: int,
+        Production: str,
+        Website: str,
     ):
-        """Cria um filme para ser adicionado à base.
+        """Cria um filme para ser adicionado à base."""
+        self.imdbID = imdbID
 
-        Arguments:
-            imdb_id: id do filme no imdb.
-            title: nome do filme.
-            year: ano de lançamento do filme.
-            runtime: duração do filme em minutos.
-            imdb_rating: nota do filme no imdb.
-            metascore: nota do filme no metascore.
-            imdb_votes: número de votos do filme no imdb.
-            box_office: arrecadação do filme em milhões de dólares.
-            genre: gênero do filme.
-            plot: sinopse do filme.
-            poster: url do poster do filme.
-            created_at: data de criação do filme.
-        """
-        self.imdb_id = imdb_id
-        self.title = title
-        self.year = year
-        self.runtime = runtime
-        self.imdb_rating = imdb_rating
-        self.metascore = metascore
-        self.imdb_votes = imdb_votes
-        self.box_office = box_office
-        self.genre = genre
-        self.plot = plot
-        self.poster = poster
+        self.Title = Title
+
+        self.Year = Year
+        self.Released = Released
+        self.Runtime = Runtime
+        self.Genre = Genre
+        self.Director = Director
+        self.Writer = Writer
+        self.Actors = Actors
+        self.Plot = Plot
+        self.Language = Language
+        self.Country = Country
+        self.Awards = Awards
+        self.Poster = Poster
+        self.Rated = Rated
+        self.Metascore = Metascore
+        self.imdbRating = imdbRating
+        self.imdbVotes = imdbVotes
+        self.Type = Type
+        self.DVD = DVD
+        self.BoxOffice = BoxOffice
+        self.Production = Production
+        self.Website = Website
+
+    def to_dict(self):
+        """Transforma o filme em um dicionário."""
+        return {
+            "imdbID": self.imdbID,
+            "Title": self.Title,
+            "Year": self.Year,
+            "Released": self.Released,
+            "Runtime": self.Runtime,
+            "Genre": self.Genre,
+            "Director": self.Director,
+            "Writer": self.Writer,
+            "Actors": self.Actors,
+            "Plot": self.Plot,
+            "Language": self.Language,
+            "Country": self.Country,
+            "Awards": self.Awards,
+            "Poster": self.Poster,
+            "Rated": self.Rated,
+            "Metascore": self.Metascore,
+            "imdbRating": self.imdbRating,
+            "imdbVotes": self.imdbVotes,
+            "Type": self.Type,
+            "DVD": self.DVD,
+            "BoxOffice": self.BoxOffice,
+            "Production": self.Production,
+            "Website": self.Website,
+        }

@@ -97,48 +97,48 @@ def parse_results(results):
     # Build and store all of the attributes into the Pandas movie dataframe.
     movies = pd.DataFrame(
         {
-            "title": titles,
-            "year": years,
-            "runtime": runtimes,
-            "imdb_rating": imdb_ratings,
-            "imdb_id": imdb_ids,
-            "metascore": metascores,
-            "imdb_votes": imdb_votes,
-            "box_office": box_offices,
-            "genre": genres,
-            "plot": plots,
-            "poster": posters,
+            "Title": titles,
+            "Year": years,
+            "Runtime": runtimes,
+            "imdbRating": imdb_ratings,
+            "imdbID": imdb_ids,
+            "Metascore": metascores,
+            "imdbVotes": imdb_votes,
+            "BoxOffice": box_offices,
+            "Genre": genres,
+            "Plot": plots,
+            "Poster": posters,
         }
     )
 
     # Use Pandas str.extract to remove all String characters, and save the
     # value as type int for cleaning up the data with Pandas.
-    movies["year"] = (
-        movies["year"]
+    movies["Year"] = (
+        movies["Year"]
         .str.replace("(", "")
         .str.replace(")", "")
         .str.replace("I", "")
         .str.strip()
     )
-    movies["runtime"] = movies["runtime"].str.strip()
-    movies["metascore"] = movies["metascore"].str.strip()
+    movies["Runtime"] = movies["Runtime"].str.strip()
+    movies["Metascore"] = movies["Metascore"].str.strip()
 
-    movies["imdb_votes"] = movies["imdb_votes"].str.strip()
-    movies["box_office"] = movies["box_office"].map(
+    movies["imdbVotes"] = movies["imdbVotes"].str.strip()
+    movies["BoxOffice"] = movies["BoxOffice"].map(
         lambda x: x.lstrip("$").rstrip("M")
     )
-    movies["box_office"] = pd.to_numeric(movies["box_office"], errors="coerce")
+    movies["BoxOffice"] = pd.to_numeric(movies["BoxOffice"], errors="coerce")
     # Aplicar a função de formatação à coluna 'box_office'
-    movies["box_office"] = movies["box_office"].apply(format_box_office)
+    movies["BoxOffice"] = movies["BoxOffice"].apply(format_box_office)
 
-    movies["genre"] = movies["genre"].str.replace("\n", "").str.strip()
-    movies["plot"] = movies["plot"].str.replace("\n", "")
+    movies["Genre"] = movies["Genre"].str.replace("\n", "").str.strip()
+    movies["Plot"] = movies["Plot"].str.replace("\n", "")
 
     return movies
 
 
 def format_box_office(value):
-    """Função para formatar o valor do box_office."""
+    """Função para formatar o valor do BoxOffice."""
     if value == 0:
         return "0"
 
