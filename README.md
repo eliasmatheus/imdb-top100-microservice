@@ -1,8 +1,19 @@
-# My Movies API
+# IMDb Top 100 API
 
-Este pequeno projeto faz parte do projeto final da Disciplina **Desenvolvimento Full Stack Avançado**
+Este projeto de API foi desenvolvido em Flask para a disciplina de **Desenvolvimento Backend Avançado** do programa de pós-graduação em Desenvolvimento Full Stack da [PUC-Rio](https://www.puc-rio.br/index.html).
 
-O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
+O objetivo deste projeto é criar uma API que faz o web scrapping dos 100 filmes mais populares da IMDb ao ser iniciada, e armazena a lista com os filmes e suas informações, como título, ano de lançamento, diretor, elenco, etc. em um banco de dados SQLite para servir como uma base de dados para a API de gerenciamento de filmes.
+
+Esta API foi feita baseada em microserviços usando uma arquitetura REST,
+de acordo com o diagrama abaixo:
+
+<p align="center">
+  <img src="./static/diagram.png" alt="My Project GIF">
+</p>
+
+---
+
+## Documentação
 
 <p align="center">
   <img src="./static/screenshot.png" alt="My Project GIF">
@@ -14,6 +25,11 @@ O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
 - [SQLAlchemy](https://www.sqlalchemy.org/)
 - [OpenAPI3](https://swagger.io/specification/)
 - [SQLite](https://www.sqlite.org/index.html)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [OMDb API](http://www.omdbapi.com/)
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Panadas](https://pandas.pydata.org/)
 
 ---
 
@@ -62,14 +78,12 @@ Certifique-se de ter o [Docker](https://docs.docker.com/engine/install/) instala
 Navegue até o diretório que contém o Dockerfile e o requirements.txt no terminal.
 Execute **como administrador** o seguinte comando para construir a imagem Docker:
 
-```
-$ docker build -t imbd-100 .
-```
-
-Uma vez criada a imagem, para executar o container basta executar, **como administrador**, seguinte o comando:
-
-```
-$ docker run -p 5001:5000 imbd-100
+```bash
+$ docker-compose up
 ```
 
-Uma vez executando, para acessar a API, basta abrir o [http://localhost:5001/#/](http://localhost:5001/#/) no navegador.
+Acesse o [http://localhost:5000/](http://localhost:5000/) para acessar a aplicação.
+
+## Executando a API
+
+Para rodar o API principal, acesse o repositório da [API](https://github.com/eliasmatheus/my-movies-api.git) e siga as instruções.
